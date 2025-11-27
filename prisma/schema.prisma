@@ -8,15 +8,14 @@ datasource db {
 }
 
 model Employee {
-  id           Int      @id @default(autoincrement())
-  matricule    String   @unique
-  nom          String
-  prenoms      String
-  dateNaissance DateTime
-  grade        String
+  id             Int       @id @default(autoincrement())
+  createdAt      DateTime  @default(now())
   dateDebutGrade DateTime
   dateFinGrade   DateTime?
-  indice       Int
-  createdAt    DateTime @default(now())
+  dateNaissance  DateTime
+  grade          String
+  indice         Int
+  matricule      String    @unique
+  nom            String
+  prenoms        String
 }
-
