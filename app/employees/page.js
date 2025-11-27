@@ -1,15 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function EmployeesPage() {
+  const router = useRouter();
   const [employees, setEmployees] = useState([]);
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    position: "",
-    salary: ""
-  });
 
   const fetchEmployees = () => {
     fetch("/api/employees")
@@ -19,47 +14,60 @@ export default function EmployeesPage() {
 
   useEffect(() => { fetchEmployees(); }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await fetch("/api/employees", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form)
-    });
-    setForm({ firstName: "", lastName: "", email: "", position: "", salary: "" });
-    fetchEmployees();
-  };
-
-  const handleDelete = async (id) => {
-    await fetch(`/api/employees/${id}`, { method: "DELETE" });
-    fetchEmployees();
-  };
-
   return (
-    <div>
-      <h2>Liste des employés</h2>
+    <div className="p-6">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-bold">Liste des employés</h2>
+        <button
+          onClick={() => router.push("/employees/new")}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        >
+          ➕ Ajouter un agent
+        </button>
+      </div>
 
-      {/* Formulaire d'ajout */}
-      <form onSubmit={handleSubmit}>
-        <input placeholder="Prénom" value={form.firstName} onChange={e => setForm({...form, firstName: e.target.value})} />
-        <input placeholder="Nom" value={form.lastName} onChange={e => setForm({...form, lastName: e.target.value})} />
-        <input placeholder="Email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} />
-        <input placeholder="Poste" value={form.position} onChange={e => setForm({...form, position: e.target.value})} />
-        <input placeholder="Salaire" type="number" value={form.salary} onChange={e => setForm({...form, salary: e.target.value})} />
-        <button type="submit">Ajouter</button>
-      </form>
-
-      <hr />
-
-      {/* Liste des employés */}
-      <ul>
-        {employees.map(emp => (
-          <li key={emp.id}>
-            {emp.firstName} {emp.lastName} — {emp.position} — {emp.salary}$
-            <button onClick={() => handleDelete(emp.id)} style={{ marginLeft: 10 }}>Supprimer</button>
-          </li>
-        ))}
-      </ul>
+      <table className="w-full border-collapse border border-gray-300">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="border p-2">Matricule</th>
+            <th className="border p-2">Nom</th>
+            <th className="border p-2">Prénoms</th>
+            <th className="border p-2">Grade</th>
+            <th className="border p-2">Indice</th>
+            <th className="border p-2">Opérations</th>
+          </tr>
+        </thead>
+        <tbody>
+          {employees.map(emp => (
+            <tr key={emp.id} className="hover:bg-gray-50">
+              <td className="border p-2">{emp.matricule}</td>
+              <td className="border p-2">{emp.nom}</td>
+              <td className="border p-2">{emp.prenoms}</td>
+              <td className="border p-2">{emp.grade}</td>
+              <td className="border p-2">{emp.indice}</td>
+              <td className="border p-2">
+                <button
+                  onClick={() => router.push(`/employees/${emp.id}/edit`)}
+                  className="bg-yellow-400 text-white px-2 py-1 rounded hover:bg-yellow-500 mr-2"
+                >
+                  Modifier
+                </button>
+                <button
+                  onClick={async () => {
+                    if (confirm("Voulez-vous vraiment supprimer cet employé ?")) {
+                      await fetch(`/api/employees?id=${emp.id}`, { method: "DELETE" });
+                      fetchEmployees();
+                    }
+                  }}
+                  className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                >
+                  Supprimer
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

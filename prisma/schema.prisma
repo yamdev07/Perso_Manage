@@ -8,15 +8,14 @@ datasource db {
 }
 
 model Employee {
-  id         Int      @id @default(autoincrement())
-  firstname  String
-  lastname   String
-  email      String   @unique
-  phone      String?
-  position   String
-  department String?
-  salary     Float?
-  status     String   @default("actif")
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id             Int       @id @default(autoincrement())
+  createdAt      DateTime  @default(now())
+  dateDebutGrade DateTime
+  dateFinGrade   DateTime?
+  dateNaissance  DateTime
+  grade          String
+  indice         Int
+  matricule      String    @unique
+  nom            String
+  prenoms        String
 }
