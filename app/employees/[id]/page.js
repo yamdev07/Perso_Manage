@@ -72,7 +72,7 @@ export default function EmployeeDetail() {
 
   return (
     <div className="max-w-md mx-auto bg-white p-6 rounded-xl shadow-lg mt-8">
-      <h2 className="text-2xl font-bold mb-4">
+      <h2 className="text-2xl font-bold mb-4 text-gray-800">
         Modifier {employee.prenoms} {employee.nom}
       </h2>
 
@@ -81,32 +81,37 @@ export default function EmployeeDetail() {
           value={form.nom}
           onChange={(e) => setForm({ ...form, nom: e.target.value })}
           placeholder="Nom"
-          className="border px-3 py-2 rounded text-black"
+          className="border px-3 py-2 rounded text-gray-800 placeholder-gray-500"
+          style={{ color: '#000000' }}
         />
         <input
           value={form.prenoms}
           onChange={(e) => setForm({ ...form, prenoms: e.target.value })}
           placeholder="Prénoms"
-          className="border px-3 py-2 rounded text-black"
+          className="border px-3 py-2 rounded text-gray-800 placeholder-gray-500"
+          style={{ color: '#000000' }}
         />
         <input
           value={form.matricule}
           onChange={(e) => setForm({ ...form, matricule: e.target.value })}
           placeholder="Matricule"
-          className="border px-3 py-2 rounded text-black"
+          className="border px-3 py-2 rounded text-gray-800 placeholder-gray-500"
+          style={{ color: '#000000' }}
         />
         <input
           value={form.grade}
           onChange={(e) => setForm({ ...form, grade: e.target.value })}
           placeholder="Grade"
-          className="border px-3 py-2 rounded text-black"
+          className="border px-3 py-2 rounded text-gray-800 placeholder-gray-500"
+          style={{ color: '#000000' }}
         />
         <input
           type="number"
           value={form.indice}
           onChange={(e) => setForm({ ...form, indice: Number(e.target.value) })}
           placeholder="Indice"
-          className="border px-3 py-2 rounded text-black"
+          className="border px-3 py-2 rounded text-gray-800 placeholder-gray-500"
+          style={{ color: '#000000' }}
         />
 
         <button

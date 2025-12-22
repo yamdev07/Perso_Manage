@@ -256,9 +256,9 @@ export default function EmployeeEdit() {
         {/* Carte principale */}
         <div className="bg-white shadow rounded-lg overflow-hidden">
           {isEditing ? (
-            // Formulaire d'édition
+            // Formulaire d'édition - CORRIGÉ POUR TEXTE NOIR
             <div className="p-6">
-              <h2 className="text-xl font-semibold mb-6">Modifier les informations</h2>
+              <h2 className="text-xl font-semibold mb-6 text-gray-900">Modifier les informations</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -269,7 +269,8 @@ export default function EmployeeEdit() {
                     name="matricule"
                     value={formData.matricule}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
+                    style={{ color: '#000000' }}
                     required
                   />
                 </div>
@@ -283,7 +284,8 @@ export default function EmployeeEdit() {
                     name="nom"
                     value={formData.nom}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
+                    style={{ color: '#000000' }}
                     required
                   />
                 </div>
@@ -297,7 +299,8 @@ export default function EmployeeEdit() {
                     name="prenoms"
                     value={formData.prenoms}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
+                    style={{ color: '#000000' }}
                     required
                   />
                 </div>
@@ -311,7 +314,8 @@ export default function EmployeeEdit() {
                     name="dateNaissance"
                     value={formData.dateNaissance}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
+                    style={{ color: '#000000' }}
                   />
                 </div>
                 
@@ -324,7 +328,8 @@ export default function EmployeeEdit() {
                     name="grade"
                     value={formData.grade}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
+                    style={{ color: '#000000' }}
                   />
                 </div>
                 
@@ -337,7 +342,8 @@ export default function EmployeeEdit() {
                     name="indice"
                     value={formData.indice}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
+                    style={{ color: '#000000' }}
                   />
                 </div>
                 
@@ -350,7 +356,8 @@ export default function EmployeeEdit() {
                     name="dateDebutGrade"
                     value={formData.dateDebutGrade}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
+                    style={{ color: '#000000' }}
                   />
                 </div>
                 
@@ -363,7 +370,8 @@ export default function EmployeeEdit() {
                     name="dateFinGrade"
                     value={formData.dateFinGrade}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
+                    style={{ color: '#000000' }}
                   />
                 </div>
               </div>
